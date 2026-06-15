@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brenda Mass — Música en Vivo, Tributos y Locución Comercial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B3E;
+    --blue: #185FA5;
+    --gold: #D9B96B;
+    --cream: #F5F1E8;
+    --text: #1A1A1A;
+    --muted: #5A6478;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 760px; margin: 0 auto; }
+
+  /* SISTEMA DE NAVEGACIÓN SPA */
+  .page-view {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+  .page-view.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero img.hero-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+  .hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13,27,62,0.15) 0%, rgba(13,27,62,0.50) 50%, rgba(13,27,62,0.92) 100%);
+  }
+  .hero .hero-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 32px 24px 44px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .hero .tagline {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .hero p.sub {
+    font-size: 15.5px;
+    color: #C8D6EE;
+    max-width: 500px;
+    margin: 0 auto 24px;
+    line-height: 1.5;
+  }
+  
+  /* CONTENEDOR DE ACCIONES EN EL HERO */
+  .hero-actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .hero-services-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+  .btn-hero-sec {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-hero-sec:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-1px);
+  }
+  
+  /* BOTONES */
+  .btn {
+    display: inline-block;
+    background: var(--gold);
+    color: #1e1503;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 34px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease, background-color 0.2s;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { 
+    transform: translateY(-2px); 
+    background-color: #eecf84;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    font-weight: 700;
+    font-size: 14.5px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-outline:hover {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  /* SECTIONS */
+  section { padding: 56px 24px; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .section-kicker {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0 auto 32px;
+  }
+
+  /* SOBRE */
+  .sobre { background: #fff; }
+  .sobre p {
+    max-width: 620px;
+    margin: 0 auto 16px;
+    font-size: 15.5px;
+    color: #333;
+  }
+  .creds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  .creds span {
+    background: var(--cream);
+    border: 1px solid #E5DCC8;
+    color: var(--navy);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 20px;
+  }
+  .about-video {
+    max-width: 280px;
+    margin: 28px auto 0;
+  }
+  .about-video video {
+    width: 100%;
+    display: block;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(13,27,62,0.10);
+    background: #000;
+  }
+  .about-video-caption {
+    font-size: 12.5px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* TAB SYSTEM (SERVICES HUB) - Evita Scroll Fatigue */
+  .services-hub-section {
+    background: #fff;
+    border-top: 1px solid #ECE4D2;
+    border-bottom: 1px solid #ECE4D2;
+  }
+  .tab-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    background: var(--cream);
+    padding: 6px;
+    border-radius: 40px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--muted);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .tab-btn.active {
+    background: var(--navy);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(13, 27, 62, 0.15);
+  }
+  .tab-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .tab-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* TIPOS DE EVENTO (MINI CARDS) */
+  .tipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tipo-card {
+    background: var(--cream);
+    border: 1px solid #ECE4D2;
+    border-radius: 14px;
+    padding: 20px 12px;
+    text-align: center;
+  }
+  .tipo-card .ico {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .tipo-card h4 {
+    font-size: 13.5px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .tipo-card p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* FORMATOS CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-bottom: 40px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    border: 1px solid #ECE4D2;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  }
+  .card h3 {
+    font-size: 16px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .card .desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .card .card-tags {
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 600;
+    border-top: 1px solid #E5DCC8;
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+  .card .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--blue);
+    background: #E8F0FA;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+
+  /* VIDEOS GRID */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .video-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(13,27,62,0.10);
+    background: #000;
+  }
+  .video-item iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* TRIBUTOS ESPECIALES */
+  .tributos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .tributo-card {
+    background: var(--cream);
+    border: 1px solid #ECE4D2;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(13,27,62,0.04);
+    display: flex;
+    flex-direction: column;
+  }
+  .tributo-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+  .tributo-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .tributo-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .tributo-badge {
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blue);
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .tributo-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .tributo-info p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* PREVIEW DE VOCES EN PORTADA */
+  .voces-preview-box {
+    background: var(--cream);
+    border-radius: 16px;
+    border: 1px solid #ECE4D2;
+    padding: 30px;
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(13,27,62,0.03);
+  }
+  .voces-preview-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .voces-preview-box p {
+    font-size: 14.5px;
+    color: var(--muted);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+
+  /* BANNER DIVISOR */
+  .banner {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+  }
+  .banner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .banner .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(13,27,62,0.65) 0%, rgba(24,95,165,0.55) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .banner .overlay p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #fff;
+    max-width: 480px;
+  }
+
+  /* ACORDIONES (EXTRAS & CONDICIONES) - Optimiza espacio */
+  .accordion-section {
+    background: var(--cream);
+  }
+  .accordion-container {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .accordion-item {
+    background: #fff;
+    border: 1px solid #ECE4D2;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+  .accordion-item:hover {
+    box-shadow: 0 4px 12px rgba(13,27,62,0.04);
+  }
+  .accordion-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+  }
+  .accordion-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .accordion-icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--blue);
+    stroke-width: 2.5;
+    transition: transform 0.3s ease;
+  }
+  .accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+  }
+  .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  .accordion-content {
+    padding: 0 22px 22px;
+    font-size: 14px;
+    color: #333;
+    border-top: 1px dashed #ECE4D2;
+    padding-top: 18px;
+  }
+
+  .accordion-extras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .accordion-extra-card {
+    background: var(--cream);
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ECE4D2;
+  }
+  .accordion-extra-card h5 {
+    color: var(--navy);
+    font-size: 13.5px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .accordion-extra-card p {
+    color: var(--muted);
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  .accordion-content ul { list-style: none; }
+  .accordion-content li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .accordion-content li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 800;
+  }
+
+  /* TESTIMONIOS */
+  .testimonios { background: #fff; }
+  .t-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .t-card {
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 18px 20px;
+  }
+  .t-card p {
+    font-size: 13.5px;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  .t-card span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* CONTACTO */
+  .contacto {
+    background: linear-gradient(160deg, #0D1B3E 0%, #185FA5 100%);
+    color: #fff;
+    text-align: center;
+  }
+  .contacto h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .contacto p {
+    color: #C8D6EE;
+    max-width: 460px;
+    margin: 0 auto 26px;
+    font-size: 15px;
+  }
+  .contacto .qr { margin-top: 30px; }
+  .contacto .qr img {
+    width: 110px; height: 110px;
+    border-radius: 10px;
+    background: #fff;
+    padding: 8px;
+  }
+  .contacto .qr p { font-size: 12px; color: #C8D6EE; margin-top: 10px; }
+  .contacto .contact-line { margin-top: 22px; font-size: 14px; color: #C8D6EE; }
+  .contacto .contact-line a { color: #fff; font-weight: 600; text-decoration: none; }
+
+  /* NUEVA SUBPÁGINA: PORTAFOLIO DE LOCUCIÓN COMERCIAL (SPA) */
+  .voces-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 18px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+  .voces-header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .voces-hero {
+    background: linear-gradient(180deg, var(--navy) 0%, #162C5B 100%);
+    color: #fff;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .voces-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .voces-hero p {
+    color: #C8D6EE;
+    font-size: 15.5px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* MULTI-DEMO PLAYER SECTION */
+  .demo-playlist-box {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #ECE4D2;
+    padding: 24px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 18px rgba(13,27,62,0.03);
+  }
+  .playlist-title {
+    font-size: 14.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--blue);
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ECE4D2;
+    padding-bottom: 10px;
+  }
+  .audio-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px;
+    background: var(--cream);
+    border: 1px solid #ECE4D2;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .audio-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13,27,62,0.05);
+  }
+  .audio-row.active {
+    background: #0D1B3E;
+    color: #fff;
+    border-color: #0D1B3E;
+  }
+  .row-control-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #20140a;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+  }
+  .row-control-btn:hover {
+    transform: scale(1.05);
+  }
+  .row-control-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  .row-info {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  .row-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .row-category {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--blue);
+  }
+  .audio-row.active .row-category {
+    color: var(--gold);
+  }
+
+  /* ESTILOS DEL MOCKUP DE INSTAGRAM (SENIOR UX DESIGN) */
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .instagram-mockup-card {
+    background: #fff;
+    border: 1px solid #E1E1E1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+  }
+  .ig-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #F0F0F0;
+  }
+  .ig-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    padding: 2px;
+  }
+  .ig-avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #fff;
+    overflow: hidden;
+  }
+  .ig-avatar-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ig-meta {
+    margin-left: 10px;
+  }
+  .ig-username {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #262626;
+  }
+  .ig-location {
+    font-size: 11px;
+    color: #8e8e8e;
+  }
+  .ig-reel-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .ig-reel-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+  }
+  .ig-reel-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 2;
+  }
+  .ig-play-trigger {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: #111;
+  }
+  .ig-play-trigger:hover {
+    transform: scale(1.1);
+  }
+  .ig-play-trigger svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 4px;
+    fill: currentColor;
+  }
+  .ig-bottom-caption {
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  }
+  .ig-caption-text {
+    font-size: 12.5px;
+    line-height: 1.4;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .ig-action-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-top: 1px solid #F0F0F0;
+  }
+  .ig-action-btn {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tech-specs {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+  }
+  .tech-specs h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .spec-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .spec-card h5 {
+    color: var(--gold);
+    font-size: 13.5px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .spec-card p {
+    font-size: 12.5px;
+    color: #C8D6EE;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 30px; }
+    .hero img.hero-img { height: 380px; }
+    .section-title { font-size: 22px; }
+    .banner { height: 200px; }
+    .tab-container {
+      overflow-x: auto;
+      justify-content: flex-start;
+      border-radius: 15px;
+      padding: 4px;
+    }
+    .tab-btn {
+      padding: 10px 14px;
+      font-size: 12.5px;
+    }
+    .tributos-grid { grid-template-columns: 1fr; }
+    .accordion-extras-grid { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: 1fr; }
+    .voces-hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- VISTA 1: HOME (PÁGINA PRINCIPAL) -->
+  <div id="view-home" class="page-view active">
+    
+    <div class="hero">
+      <img class="hero-img" src="hero-brenda.jpg" alt="Brenda Mass en vivo">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>BRENDA MASS</h1>
+        <div class="tagline">Música en Vivo & Servicios de Voz</div>
+        <p class="sub">Voz, repertorio adaptado y sonido premium para eventos de marca, bodas e institucionales. Shows tributos especiales y locución comercial profesional.</p>
+        
+        <div class="hero-actions-container">
+          <!-- Botón de Acción Principal (Conversión Directa) -->
+          <a class="btn" href="https://wa.me/595994711961?text=Hola%20Brenda!%20Estoy%20organizando%20un%20evento%20y%20me%20gustar%C3%ADa%20cotizar%20m%C3%BAsica%20en%20vivo." target="_blank">Cotizar para mi evento</a>
+          
+          <!-- Accesos Rápidos a Servicios -->
+          <div class="hero-services-grid">
+            <button class="btn-hero-sec" onclick="exploreService('live-music')">🎸 Música en Vivo</button>
+            <button class="btn-hero-sec" onclick="exploreService('tribute-shows')">🎤 Shows Tributo</button>
+            <button class="btn-hero-sec" onclick="exploreService('voiceover')">🎙️ Locución</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+
+      <section class="sobre">
+        <div class="section-kicker">Sobre Brenda</div>
+        <h2 class="section-title">13 años creando momentos únicos</h2>
+        <p>
+          Más de 13 años de trayectoria en pop, rock y música tropical, en español e inglés.
+          Experiencia liderando activaciones y shows para marcas de primer nivel.
+        </p>
+        <p>
+          Cada presentación se adapta finamente al perfil de tu audiencia: repertorio diseñado a medida, coordinación absoluta de músicos y equipamiento de amplificación profesional propio para que no tengas que preocuparte de nada.
+        </p>
+        <div class="creds">
+          <span>+13 años de trayectoria</span>
+          <span>Pop · Rock · Tropical</span>
+          <span>Español e Inglés</span>
+          <span>BMW · Honda · Hard Rock Café</span>
+        </div>
+        <div class="about-video">
+          <video controls preload="metadata" poster="hero-brenda.jpg" playsinline>
+            <source src="video-trabajo.mp4" type="video/mp4">
+          </video>
+          <p class="about-video-caption">Conoce mi flujo de trabajo e inicio de show</p>
+        </div>
+      </section>
+
+      <!-- HUB DE SERVICIOS DINÁMICOS (TABS) -->
+      <section id="services-hub" class="services-hub-section">
+        <div class="section-kicker">¿Qué estás buscando?</div>
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-sub">Selecciona un servicio para explorar los formatos disponibles, repertorios y material multimedia de forma interactiva.</p>
+
+        <div class="tab-container">
+          <button class="tab-btn active" onclick="switchTab('live-music')">🎸 Música en Vivo</button>
+          <button class="tab-btn" onclick="switchTab('tribute-shows')">🎤 Shows Tributo</button>
+          <button class="tab-btn" onclick="switchTab('voiceover')">🎙️ Locución & Voces</button>
+        </div>
+
+        <!-- TAB 1: MÚSICA EN VIVO -->
+        <div id="live-music" class="tab-content active">
+          
+          <div class="tipos-grid">
+            <div class="tipo-card">
+              <div class="ico">💍</div>
+              <h4>Bodas</h4>
+              <p>Ceremonia, cóctel y fiesta de gala</p>
+            </div>
+            <div class="tipo-card">
+              <div class="ico">🎉</div>
+              <h4>Cumpleaños</h4>
+              <p>Celebraciones íntimas y de gran escala</p>
+            </div>
+            <div class="tipo-card">
+              <div class="ico">🏢</div>
+              <h4>Corporativos</h4>
+              <p>Lanzamientos, ferias y cenas empresariales</p>
+            </div>
+            <div class="tipo-card">
+              <div class="ico">🥂</div>
+              <h4>Aperturas</h4>
+              <p>Inauguraciones y eventos de relaciones públicas</p>
+            </div>
+          </div>
+
+          <div class="cards">
+            <div class="card">
+              <span class="badge">Banda Completa</span>
+              <h3>Voz + Guitarra + Bajo + Batería + Piano</h3>
+              <div class="desc">Show de 60 min, set continuo de altísima energía. Adaptamos el repertorio al timming de la fiesta. Amplificación premium.</div>
+              <div class="card-tags">Ideal para bodas, cumpleaños y cenas corporativas</div>
+            </div>
+
+            <div class="card">
+              <span class="badge">Voz + Piano</span>
+              <h3>Brenda + Pianista / Tecladista</h3>
+              <div class="desc">Formato sofisticado y acústico para momentos especiales como recepciones, cócteles de bienvenida o cenas tranquilas.</div>
+              <div class="card-tags">Ideal para recepciones finas, ceremonias y galas</div>
+            </div>
+
+            <div class="card">
+              <span class="badge">Solista (Voz + Pistas)</span>
+              <h3>Brenda Solista</h3>
+              <div class="desc">Formato ligero y adaptable apoyado por pistas orquestales profesionales. Ideal para espacios compactos.</div>
+              <div class="card-tags">Ideal para eventos íntimos y lanzamientos breves</div>
+            </div>
+          </div>
+
+          <h3 class="section-title" style="font-size:20px; margin-bottom: 20px;">Momentos en Acción</h3>
+          <div class="video-grid">
+            <div class="video-item">
+              <!-- Video Vertical de Mon Laferte (Short) -->
+              <iframe src="https://www.youtube.com/embed/Ggt7XUBd5Ec" title="Tributo Mon Laferte — Brenda Mass" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+              <!-- Video de Laura Pausini -->
+              <iframe src="https://www.youtube.com/embed/35x11R256LU" title="Tributo Laura Pausini — Brenda Mass" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TAB 2: SHOWS TRIBUTO -->
+        <div id="tribute-shows" class="tab-content">
+          <p class="section-sub" style="margin-bottom:24px;">Homenajes musicales en vivo con caracterización, fuerza escénica y un respeto absoluto por las intérpretes originales.</p>
+          
+          <div class="tributos-grid">
+            <!-- Mon Laferte -->
+            <div class="tributo-card">
+              <div class="tributo-video">
+                <!-- Enlace de Short de Mon Laferte embebido -->
+                <iframe src="https://www.youtube.com/embed/Ggt7XUBd5Ec" title="Tributo Mon Laferte — Brenda Mass" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="tributo-info">
+                <span class="tributo-badge">Tributo Escénico</span>
+                <h3>Mon Laferte</h3>
+                <p>La intensidad emocional y el toque vintage de la gran artista chilena. Un set cargado de drama, calidez y clásicos absolutos como "Tu Falta de Querer", "Amárrame" y "Mi Buen Amor".</p>
+              </div>
+            </div>
+
+            <!-- Laura Pausini -->
+            <div class="tributo-card">
+              <div class="tributo-video">
+                <!-- Enlace de Video de Laura Pausini embebido -->
+                <iframe src="https://www.youtube.com/embed/35x11R256LU" title="Tributo Laura Pausini — Brenda Mass" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="tributo-info">
+                <span class="tributo-badge">Tributo Vocal</span>
+                <h3>Laura Pausini</h3>
+                <p>Un recorrido emocionante por el repertorio de la reina de la balada italiana. Arreglos y potencia vocal interpretando "En Cambio No", "La Soledad", "Se Fue" y "Amores Extraños".</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: LOCUCIÓN COMERCIAL (PREVIEW DE ENTRADA A SUBPÁGINA) -->
+        <div id="voiceover" class="tab-content">
+          <div class="voces-preview-box">
+            <h3>Identidad Vocal para tu Marca</h3>
+            <p>
+              Voz profesional comercial e institucional para campañas de radio, TV, contenidos en redes sociales, narraciones y sistemas IVR. Locuciones dinámicas masterizadas desde estudio propio.
+            </p>
+            <button class="btn" onclick="navigateTo('voces')">🎙️ Explorar Portafolio de Locución</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- BANNER DIVISOR -->
+      <div class="banner">
+        <img src="banner-brenda.jpg" alt="Brenda Mass y banda en vivo">
+        <div class="overlay">
+          <p>"La música en vivo no es un relleno más del evento — es lo que tus invitados recordarán con emoción."</p>
+        </div>
+      </div>
+
+      <!-- SECCIÓN ACORDEÓN: EXTRAS Y CONDICIONES -->
+      <section class="accordion-section">
+        <div class="section-kicker">Planificación Fina</div>
+        <h2 class="section-title">Detalles & Logística</h2>
+        <p class="section-sub">Haz click para expandir la información adicional y despejar tus dudas sobre la organización.</p>
+
+        <div class="accordion-container">
+          
+          <!-- ACORDEÓN 1: EXTRAS -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <span class="accordion-title">🌟 Sumar detalles adicionales (Extras)</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24">
+                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-content">
+                <div class="accordion-extras-grid">
+                  <div class="accordion-extra-card">
+                    <h5>Fotografía Escénica</h5>
+                    <p>Registro del show completo en alta definición digital.</p>
+                  </div>
+                  <div class="accordion-extra-card">
+                    <h5>Resumen para Redes</h5>
+                    <p>Video de 60" optimizado para plataformas digitales.</p>
+                  </div>
+                  <div class="accordion-extra-card">
+                    <h5>Set Adicional (1 hora)</h5>
+                    <p>Extiende el show si la fiesta lo requiere.</p>
+                  </div>
+                  <div class="accordion-extra-card">
+                    <h5>Servicio DJ</h5>
+                    <p>Música de ambiente y baile durante nuestros descansos.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACORDEÓN 2: CONDICIONES -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <span class="accordion-title">📝 Términos & Condiciones del Servicio</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24">
+                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="accordion-panel">
+              <div class="accordion-content">
+                <ul>
+                  <li>Se incluye equipamiento y amplificación profesional en el área metropolitana.</li>
+                  <li>Si el recinto o salón posee su propia consola y PA, el presupuesto final se ajusta.</li>
+                  <li>Toda la dirección artística y la coordinación de los músicos queda en manos de Brenda.</li>
+                  <li>Para efectivizar la reserva formal de la fecha se requiere un 50% de anticipo.</li>
+                  <li>Los traslados de equipamiento y personal fuera de Asunción se calculan según kilometraje.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TESTIMONIOS -->
+      <section class="testimonios">
+        <div class="section-kicker">Testimonios</div>
+        <h2 class="section-title">Clientes Satisfechos</h2>
+        <div class="t-grid">
+          <div class="t-card">
+            <p>"Repertorio musical variado, excelencia y profesionalismo a la hora de brindar sus servicios, linda voz y show musical bastante divertido."</p>
+            <span>Carmen Rivera — BMW Bolivia</span>
+          </div>
+          <div class="t-card">
+            <p>"Excelente. Una voz increíble y un trabajo insuperable. La recomendaría siempre."</p>
+            <span>Judilyn — Honda Autobol</span>
+          </div>
+          <div class="t-card">
+            <p>"Excelente. Súper profesional en todos los aspectos técnicos y artísticos."</p>
+            <span>Paul Handal — Alma Libre</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="contacto">
+      <h2>¿Comenzamos a diseñar tu evento?</h2>
+      <p>Compárteme tu fecha tentativa, la locación y el estilo del show que imaginas para enviarte una cotización personalizada.</p>
+      <a class="btn" href="https://wa.me/595994711961?text=Hola%20Brenda!%20Estoy%20organizando%20un%20evento%20y%20me%20gustar%C3%ADa%20cotizar%20m%C3%BAsica%20en%20vivo." target="_blank">Escribir por WhatsApp</a>
+      <div class="contact-line">
+        <a href="mailto:massbrenda@gmail.com">massbrenda@gmail.com</a> · +595 994 711961
+      </div>
+      <div class="qr">
+        <img src="qr-whatsapp.png" alt="QR WhatsApp Brenda Mass">
+        <p>Escanea para iniciar el chat</p>
+      </div>
+    </div>
+
+    <footer>
+      Brenda Mass · Música en Vivo & Locución · Asunción, Paraguay
+    </footer>
+
+  </div>
+
+  <!-- VISTA 2: DEDICADA — PORTAFOLIO DE LOCUCIÓN COMERCIAL -->
+  <div id="view-voces" class="page-view">
+    
+    <div class="voces-header">
+      <div class="voces-header-inner">
+        <button class="back-btn" onclick="navigateTo('home')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Volver al Inicio
+        </button>
+        <span style="font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold);">LOCUTORA COMERCIAL</span>
+      </div>
+    </div>
+
+    <div class="voces-hero">
+      <h1>Portafolio de Locución</h1>
+      <p>Identidad de marca, fuerza comunicativa y versatilidad vocal para comerciales de radio, televisión, redes sociales y narrativas multimedia.</p>
+    </div>
+
+    <div class="wrap" style="padding: 40px 24px;">
+
+      <!-- REPRODUCTOR MULTI-DEMO -->
+      <div class="demo-playlist-box">
+        <h4 class="playlist-title">🎙️ Demos de Audio en Estudio</h4>
+        
+        <!-- DEMO 1 -->
+        <div class="audio-row" id="row-demo-1" onclick="selectDemo(1, 'demo-voz-comercial.mp3', 'Demo Voz Comercial — Energía y Dinamismo')">
+          <button class="row-control-btn">
+            <svg class="play-svg" id="play-row-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="pause-svg" id="pause-row-1" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <div class="row-info">
+            <div class="row-title">Demo de Voz Comercial</div>
+            <div class="row-category">Spot de Radio, TV and Marcas</div>
+          </div>
+        </div>
+
+        <!-- DEMO 2 -->
+        <div class="audio-row" id="row-demo-2" onclick="selectDemo(2, 'demo-voz-corporativa.mp3', 'Demo Voz Corporativa — Institucional y Cálido')">
+          <button class="row-control-btn">
+            <svg class="play-svg" id="play-row-2" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="pause-svg" id="pause-row-2" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <div class="row-info">
+            <div class="row-title">Narración Corporativa & Documental</div>
+            <div class="row-category">Identidad Institucional e IVR</div>
+          </div>
+        </div>
+
+        <!-- DEMO 3 -->
+        <div class="audio-row" id="row-demo-3" onclick="selectDemo(3, 'demo-voz-reels.mp3', 'Demo Contenido Digital — Fresco e Impactante')">
+          <button class="row-control-btn">
+            <svg class="play-svg" id="play-row-3" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="pause-svg" id="pause-row-3" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <div class="row-info">
+            <div class="row-title">Social Media & Reels</div>
+            <div class="row-category">Contenido ágil para Tik Tok e Instagram</div>
+          </div>
+        </div>
+
+        <!-- PLAYER CONSOLIDADO E INTERACTIVO -->
+        <div class="audio-player-demo" style="margin-top:20px;">
+          <div class="audio-details">
+            <div class="audio-title" id="audioTitle">Selecciona una demo para escuchar</div>
+            <div class="wave-visual" id="waveVisual">
+              <div class="wave-bar" style="height: 30%"></div>
+              <div class="wave-bar" style="height: 60%"></div>
+              <div class="wave-bar" style="height: 45%"></div>
+              <div class="wave-bar" style="height: 80%"></div>
+              <div class="wave-bar" style="height: 95%"></div>
+              <div class="wave-bar" style="height: 50%"></div>
+              <div class="wave-bar" style="height: 70%"></div>
+              <div class="wave-bar" style="height: 35%"></div>
+              <div class="wave-bar" style="height: 90%"></div>
+              <div class="wave-bar" style="height: 60%"></div>
+              <div class="wave-bar" style="height: 40%"></div>
+              <div class="wave-bar" style="height: 85%"></div>
+              <div class="wave-bar" style="height: 30%"></div>
+              <div class="wave-bar" style="height: 50%"></div>
+              <div class="wave-bar" style="height: 75%"></div>
+              <div class="wave-bar" style="height: 20%"></div>
+            </div>
+          </div>
+          <audio id="demoAudio" src="" preload="none"></audio>
+        </div>
+
+      </div>
+
+      <!-- REDES & SOCIAL MEDIA EXAMPLES -->
+      <h3 class="section-title" style="font-size: 22px; margin-bottom: 24px;">Contenido Destacado en Redes</h3>
+      
+      <div class="social-grid">
+        <!-- Tarjeta de Instagram Reel Mockup (Optimizado para Carga Instantánea) -->
+        <div class="instagram-mockup-card">
+          <div class="ig-header">
+            <div class="ig-avatar">
+              <div class="ig-avatar-inner">
+                <img src="hero-brenda.jpg" alt="Brenda Mass avatar">
+              </div>
+            </div>
+            <div class="ig-meta">
+              <div class="ig-username">massbrenda</div>
+              <div class="ig-location">Instagram Reel</div>
+            </div>
+          </div>
+          <div class="ig-reel-container">
+            <img class="ig-reel-poster" src="hero-brenda.jpg" alt="Portada de Reel">
+            <div class="ig-reel-overlay">
+              <a class="ig-play-trigger" href="https://www.instagram.com/reel/DW_u7iekTrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" title="Ver en Instagram">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </a>
+              <div class="ig-bottom-caption">
+                <span style="font-weight:700;">@massbrenda</span>
+                <p class="ig-caption-text">Ejemplo de locución comercial, dinamismo y locución fresca para eventos de marca y spots.</p>
+              </div>
+            </div>
+          </div>
+          <div class="ig-action-bar">
+            <a class="ig-action-btn" href="https://www.instagram.com/reel/DW_u7iekTrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              Ver Reel en Instagram
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Información e Inspiración de Marca -->
+        <div style="display:flex; flex-direction:column; justify-content:center;">
+          <h4 style="font-family:'Playfair Display',serif; font-size: 20px; color: var(--navy); margin-bottom:12px;">Estilo & Versatilidad Vocal</h4>
+          <p style="font-size:14.5px; color:#444; margin-bottom: 16px;">
+            Cada marca requiere una personalidad. A través de mi portafolio puedes encontrar tonos cálidos y de gran credibilidad para locuciones institucionales, así como tonos altamente dinámicos y enérgicos ideales para redes sociales y activaciones directas en tiendas.
+          </p>
+          <p style="font-size:14.5px; color:#444;">
+            Cuento con estudio de grabación acondicionado acústicamente con equipamiento profesional de alta gama para asegurar nitidez absoluta y tiempos de respuesta ultra rápidos.
+          </p>
+        </div>
+      </div>
+
+      <!-- FICHA TÉCNICA DEL ESTUDIO -->
+      <div class="tech-specs">
+        <h3>Equipamiento & Calidad de Audio</h3>
+        <div class="specs-grid">
+          <div class="spec-card">
+            <h5>Micrófono</h5>
+            <p>Condensador de alta fidelidad</p>
+          </div>
+          <div class="spec-card">
+            <h5>Interfaz & Pre</h5>
+            <p>Focusrite Scarlett Pro</p>
+          </div>
+          <div class="spec-card">
+            <h5>Tratamiento</h5>
+            <p>Cabina acústica optimizada</p>
+          </div>
+          <div class="spec-card">
+            <h5>Formatos</h5>
+            <p>WAV / MP3 Masterizado</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACTO DEDICADO DE LOCUCIÓN -->
+      <div class="contacto" style="border-radius: 16px; padding: 48px 24px;">
+        <h2>¿Cotizamos la voz de tu proyecto?</h2>
+        <p>Escríbeme enviándome tu propuesta de guión o las características de la campaña que planificas para armar un presupuesto y enviarte una muestra de prueba sin costo.</p>
+        <a class="btn" href="https://wa.me/595994711961?text=Hola%20Brenda!%20Vi%20tu%20portafolio%20de%20locuci%C3%B3n%20comercial%20y%20me%20gustar%C3%ADa%20cotizar%20la%20voz%20para%20un%20proyecto." target="_blank">Escribir por WhatsApp</a>
+        <div class="contact-line" style="margin-top: 16px;">
+          <a href="mailto:massbrenda@gmail.com">massbrenda@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer style="margin-top:40px;">
+      Brenda Mass · Locución Profesional · Asunción, Paraguay
+    </footer>
+
+  </div>
+
+  <script>
+    // SISTEMA SPA: NAVEGACIÓN DE VISTAS (HOME / VOCES)
+    function navigateTo(viewId) {
+      // Detener música si cambian de vista
+      stopAllAudio();
+
+      const homeView = document.getElementById('view-home');
+      const vocesView = document.getElementById('view-voces');
+
+      if (viewId === 'voces') {
+        homeView.classList.remove('active');
+        // Transición de salida suave
+        setTimeout(() => {
+          homeView.style.display = 'none';
+          vocesView.style.display = 'block';
+          // Transición de entrada suave
+          setTimeout(() => {
+            vocesView.classList.add('active');
+          }, 50);
+        }, 300);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        vocesView.classList.remove('active');
+        setTimeout(() => {
+          vocesView.style.display = 'none';
+          homeView.style.display = 'block';
+          setTimeout(() => {
+            homeView.classList.add('active');
+          }, 50);
+        }, 300);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // ACCESO RÁPIDO DESDE EL HERO (NUEVO)
+    function exploreService(serviceId) {
+      if (serviceId === 'voiceover') {
+        navigateTo('voces');
+      } else {
+        // Activa la pestaña correspondiente
+        switchTab(serviceId);
+        // Desplaza suavemente hacia la sección de servicios
+        const servicesSection = document.getElementById('services-hub');
+        if (servicesSection) {
+          servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    // CONTROL DEL HUB DE SERVICIOS (TABS)
+    function switchTab(tabId) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => {
+        content.classList.remove('active');
+      });
+
+      const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const targetContent = document.getElementById(tabId);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    }
+
+    // CONTROL DEL ACORDEÓN LOGÍSTICO
+    function toggleAccordion(trigger) {
+      const item = trigger.parentElement;
+      const panel = trigger.nextElementSibling;
+      const isActive = item.classList.contains('active');
+
+      const allItems = document.querySelectorAll('.accordion-item');
+      allItems.forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.accordion-panel').style.maxHeight = null;
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      } else {
+        item.classList.remove('active');
+        panel.style.maxHeight = null;
+      }
+    }
+
+    // REPRODUCTOR DE AUDIOS DINÁMICO (VISTA DE VOCES)
+    let currentActiveRowId = null;
+    let audioPlaying = false;
+    const audioPlayer = document.getElementById('demoAudio');
+    const waveBars = document.querySelectorAll('.wave-bar');
+    const audioTitleLabel = document.getElementById('audioTitle');
+
+    function selectDemo(index, audioSrc, titleText) {
+      const targetRowId = `row-demo-${index}`;
+      const playIcon = document.getElementById(`play-row-${index}`);
+      const pauseIcon = document.getElementById(`pause-row-${index}`);
+      
+      // Si hacemos clic en la fila que ya está reproduciéndose, pausamos
+      if (currentActiveRowId === targetRowId) {
+        if (audioPlaying) {
+          pauseDemo(index);
+        } else {
+          playDemo(index, titleText);
+        }
+        return;
+      }
+
+      // Si había otra fila activa, la limpiamos primero
+      if (currentActiveRowId) {
+        const prevIndex = currentActiveRowId.split('-')[2];
+        document.getElementById(currentActiveRowId).classList.remove('active');
+        document.getElementById(`play-row-${prevIndex}`).style.display = 'block';
+        document.getElementById(`pause-row-${prevIndex}`).style.display = 'none';
+      }
+
+      // Configurar nueva fila como activa
+      currentActiveRowId = targetRowId;
+      document.getElementById(currentActiveRowId).classList.add('active');
+      
+      // Cargar fuente de audio ficticia/real
+      audioPlayer.src = audioSrc;
+      
+      // Iniciar reproducción
+      playDemo(index, titleText);
+    }
+
+    function playDemo(index, titleText) {
+      audioPlaying = true;
+      audioPlayer.play().catch(() => {
+        console.log("Mock de reproducción visual activado.");
+      });
+
+      document.getElementById(`play-row-${index}`).style.display = 'none';
+      document.getElementById(`pause-row-${index}`).style.display = 'block';
+      audioTitleLabel.innerText = `${titleText} 🔊`;
+
+      // Iniciar animación de barras
+      waveBars.forEach((bar, barIndex) => {
+        bar.classList.add('played');
+        bar.style.animation = `activeWave ${0.4 + Math.random() * 0.6}s ease-in-out infinite alternate`;
+        bar.style.animationDelay = `${barIndex * 0.04}s`;
+      });
+    }
+
+    function pauseDemo(index) {
+      audioPlaying = false;
+      audioPlayer.pause();
+      document.getElementById(`play-row-${index}`).style.display = 'block';
+      document.getElementById(`pause-row-${index}`).style.display = 'none';
+      audioTitleLabel.innerText = "Reproducción en pausa";
+
+      // Detener animación de barras
+      waveBars.forEach(bar => {
+        bar.style.animation = '';
+        bar.classList.remove('played');
+      });
+    }
+
+    function stopAllAudio() {
+      if (currentActiveRowId) {
+        const index = currentActiveRowId.split('-')[2];
+        pauseDemo(index);
+        document.getElementById(currentActiveRowId).classList.remove('active');
+        currentActiveRowId = null;
+      }
+      audioPlayer.pause();
+      audioPlayer.src = "";
+      audioTitleLabel.innerText = "Selecciona una demo para escuchar";
+    }
+  </script>
+
+</body>
+</html>
